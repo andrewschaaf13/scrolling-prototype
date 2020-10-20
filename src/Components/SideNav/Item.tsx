@@ -14,31 +14,37 @@ const useStyles = makeStyles({
   },
   subItem: {
     paddingLeft: 35,
-    borderLeft: '3px solid transparent'
+    borderLeft: '3px solid transparent',
+    transition: 'border-left .2s',
   },
   selectedSubItem: {
     paddingLeft: 35,
-    borderLeft: '3px solid #b50f52'
+    borderLeft: '3px solid #b50f52',
+    transition: 'border-left .2s',
   },
   item: {
-    borderLeft: '3px solid transparent'
+    borderLeft: '3px solid transparent',
+    margin: 0,
+    padding: 0,
+    height: 50,
   },
   selectedItem: {
-    borderLeft: '3px solid #b50f52'
+    borderLeft: '3px solid #b50f52',
+    margin: 0,
+    padding: 0,
   },
   link: {
     textDecoration: 'none',
     color: 'black',
-    width: 150,
+    width: 200,
+    height: 50,
   },
-  linkBox: {
-    display: 'flex',
-    width: 175,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  linkText: {
+    paddingLeft: 20,
+    paddingTop: 7,
   },
   expand: {
-    padding: 5,
+    marginRight: 10,
   }, 
   noTextDeco: {
     textDecoration: 'none',
@@ -51,7 +57,7 @@ type Props = {
   index: number;
 };
 
-const getDimensions = (ele: any) => {
+const getDimensions = (ele: HTMLElement) => {
   const { height } = ele.getBoundingClientRect();
   const offsetTop = ele.offsetTop - 20;
   const offsetBottom = offsetTop + height - 20;
@@ -120,13 +126,11 @@ const Item = (props: Props) => {
     <div key={index}>
       <ListItem button className={(selected) ? classes.selectedItem : classes.item}>
         <Link to={tab.route} className={classes.link} onClick={handleTabClick}>
-          <div className={classes.linkBox}>
-            <ListItemText primary={tab.title} />
-            <div className={classes.expand} onClick={() => setOpen(!open)}>
-              {open ? < ExpandLess/> : < ExpandMore/>}
-            </div>
-          </div>
+          <ListItemText primary={tab.title} className={classes.linkText} />
         </Link>
+        <div className={classes.expand} onClick={() => setOpen(!open)}>
+          {open ? < ExpandLess/> : < ExpandMore/>}
+        </div>
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -155,7 +159,7 @@ const Item = (props: Props) => {
       <div key={index}>
         <ListItem button className={(selected) ? classes.selectedItem : classes.item}>
           <Link to={tab.route} className={classes.link}>
-            <ListItemText primary={tab.title} />
+            <ListItemText primary={tab.title} className={classes.linkText} />
           </Link>
         </ListItem>
       </div>
