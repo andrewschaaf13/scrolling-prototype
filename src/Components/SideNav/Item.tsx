@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import './SideNav.css'
 import { Tab } from '../../types';
 import { Collapse, List, ListItem, ListItemText } from '@material-ui/core';
 import { Link, useLocation } from 'react-router-dom';
@@ -140,9 +139,9 @@ const Item = (props: Props) => {
                 <div key={index}>
                   <HashLink smooth to={tab.route + '#' + section.sectionId} className={classes.noTextDeco}>
                     <ListItem 
-                        button 
-                        className={(index === selectedSubItem) ? classes.selectedSubItem : classes.subItem}>
-                        <ListItemText primary={section.title} />
+                      button 
+                      className={(index === selectedSubItem) ? classes.selectedSubItem : classes.subItem}>
+                      <ListItemText primary={section.title} />
                     </ListItem>
                   </HashLink>
                 </div>

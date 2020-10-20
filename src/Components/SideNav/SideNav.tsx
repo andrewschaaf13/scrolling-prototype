@@ -1,6 +1,5 @@
 import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import './SideNav.css'
 import { Tab } from '../../types';
 import Item from './Item';
 
@@ -31,7 +30,6 @@ type Props = {
 
 const SideNav = (props: Props) => {
   const classes = useStyles();
-
   return (
     <div className={classes.container}>
       <div className={classes.content}>
